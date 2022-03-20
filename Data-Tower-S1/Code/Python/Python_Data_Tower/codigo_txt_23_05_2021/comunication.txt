@@ -1,0 +1,41 @@
+## prueba uno comunicacion serial con Arduino , recepcion de datos del MCU de Arduino Mega
+
+## se necesita la libreria de comunicacion serial , para ello se utiliza "pip install serial"
+## lod dispositivos se listaran con "python -m serial.tools.list_ports"
+## se necesita la libreria de tiempo para para establecer espacois comodos para la comunicacion
+
+import serial
+import time
+
+object_lecturaArduino = serial.Serial("COM3", 9600)
+time.sleep(1)
+
+# Es necesario conocer a que puerto se esta conectando la placa y a que velocidad se transmite
+
+while True:
+    val = object_lecturaArduino.readline()  ##leer cada linea
+    cadena_valores = val.decode('ascii')  ##decodificar lo que me llega utilizando ASCII
+
+    """
+        por puerto serial recibiremos "cadena_valore" que son nuestros datos
+        El problema con ellos es que bienen en el siguiente estilo (cada dato se recibe a distinto tiempo)
+
+        descripcion_etiqueta:dato_info
+
+        Esto de forma en string. Lo que nos interesa por el momento es la parte del dato, como podemos ver, este esta 
+        acontinucacion del caracter ":" por tanto debemos buscar en la trama de datos este caracter para capturar lo que 
+        tiene acontinuacion , la informacion que nos interesa 
+    """
+    pos = cadena_valores.index(":")  ## buscame en la trama de datos el indicador ":"
+    label = cadena_valores[:pos]  ##sacame desde el inicio de la trama de datos hasta la posicion ":"
+    value = cadena_valores[pos + 1:]  ##sacame el valor desde pos+1 (el dato) hasta terminar la trama de datos
+
+    """
+        label asi guardara la etiqueta del dato , en nuestro anterior ejemplo seria "descripcion_etiqueta"
+        value guardaria el valor o dato , en nuestro ejemplo seria "dato_info"
+
+        Ahora podemos identificar los datos por su etiqueta
+    """
+
+
+

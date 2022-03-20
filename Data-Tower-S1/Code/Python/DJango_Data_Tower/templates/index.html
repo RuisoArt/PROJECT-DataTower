@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
+    -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styleIndex.css' %}">
+    <link rel="shortcut icon" href="{% static 'image/icono documento.png' %}" />
+    <title>Data Tower Dashboard</title>
+
+</head>
+<body>
+
+    <header>
+        <section class="textos-header">
+            <img src="{% static 'image/icono documento.png' %}">
+            <h1>DATA TOWER</h1>
+            <h2>-Recycling Your Information-</h2>
+        </section>
+
+        <div style="height: 150px; overflow: hidden;" >
+            <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                <path d="M-1.97,151.47 C73.08,153.45 279.06,149.50 499.72,148.52 L499.15,150.48 L0.85,159.38 Z" style="stroke: none; fill: #08f;">
+                </path>
+            </svg>
+        </div>
+
+    </header>
+
+    <main>
+
+        <form align="center">
+            <section>
+                <div class="contenedor">
+                    <div>
+                        <p class="titulo">DATA TOWER</p>
+                        <p class="sub_titulo">Monitoring and Control</p>
+                    </div>
+                </div>
+                <div class="contenedor">
+                    <div class="graph"><canvas id="myChart" class="canvas"></canvas><h1 id="app1" class="text1">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart2" class="canvas"></canvas><h1 id="app2" class="text2">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart3" class="canvas"></canvas><h1 id="app3" class="text3">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart4" class="canvas"></canvas><h1 id="app4" class="text4">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart5" class="canvas"></canvas><h1 id="app5" class="text5">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart6" class="canvas"></canvas><h1 id="app6" class="text6">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart7" class="canvas"></canvas><h1 id="app7" class="text7">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart8" class="canvas"></canvas><h1 id="app8" class="text8">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart9" class="canvas"></canvas><h1 id="app9" class="text9">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart10" class="canvas"></canvas><h1 id="app10" class="text10">{{ text }}</h1></div>
+                    <div class="graph"><canvas id="myChart11" class="canvas"></canvas><h1 id="app11" class="text11">{{ text }}</h1></div>
+                </div>
+
+
+            </section>
+
+        </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 mx-auto mt-5">
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!--
+                    <p>Temperatura 1: <h1 id="app1">{{ text }}</h1> </p>
+                    <p>Temperatura 2: <h1 id="app2">{{ text }}</h1></p>
+                    <p>Temperatura 3: <h1 id="app3">{{ text }}</h1></p>
+                    <p>Temperatura 4: <h1 id="app4">{{ text }}</h1></p>
+                    <p>Temperatura 5: <h1 id="app5">{{ text }}</h1></p>
+                    <p>Temperatura 6: <h1 id="app6">{{ text }}</h1></p>
+                    <p>Temperatura 7: <h1 id="app7">{{ text }}</h1></p>
+                    <p>Temperatura 8: <h1 id="app8">{{ text }}</h1></p>
+                    <p>Corriente Pico: <h1 id="app9">{{ text }}</h1></p>
+                    <p>Corriente Irms: <h1 id="app10">{{ text }}</h1></p>
+                    <p>Potencia: <h1 id="app11">{{ text }}</h1></p>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <script src="{%  static 'js/main.js' %}"></script>
+    </main>
+
+    <footer>
+        <div class="contenido-footer">
+            <div class="contenido-PIE">
+                <h4>TRABAJO</h4>
+                <p>Contruccion de Software</p>
+                <p>Ing. Ivan Fernando Fonseca Barinas</p>
+                <p>E-mail: ivan.fonseca@usantoto.edu.co</p>
+                <p>More in: <a href="https://www.ustatunja.edu.co/comunidad-sistemas#ivan-fernando-fonseca-barinas">click aqui</a> </p>
+            </div>
+            <div class="contenido-PIE">
+                <h4>Workers Email.</h4>
+                <p>Est.Ing. Felipe Narvaez. Email: luis.narvaez@usantoto.edu.co Phone:(+57) 320 408 6190</p>
+
+            </div>
+            <div class="contenido-PIE">
+                <h4>Edition 2021, Software de Prueba.</h4>
+                <p>Universidad Santo Tómas seccional Tunja</p>
+                <p>Ing.Luis Felipe Narváez Gómez</p>
+                <p>Version: Ejercicios de clase</p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; Edition 2021, OnRuiso Arrt Desing Web | Ing.Luis Felipe Narváez Gómez | ruiso.art.science@gmail.com | Phone:(+57)320 408 6190</h2>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+
+import comunication
+
+def read_responsive_mcu_moc():
+
+    mcu_n_date, mcu_zero_date, mcu_one_date = 0
+
+    if comunication.label == 'MCU N':
+        print("El MCU recibio: {} |Este dato es erroneo CARAJO|".format(comunication.value))
+        mcu_n_date = comunication.value
+
+    elif comunication.label == 'MCU 0':
+        print("El MCU recibio: {} |OFF|".format(comunication.value))
+        mcu_zero_date = comunication.value
+
+    elif comunication.lectura_variables().label == 'MCU 1':
+        print("El MCU recibio: {} |ON|".format(comunication.value))
+        mcu_one_date = comunication.value
+
+
+

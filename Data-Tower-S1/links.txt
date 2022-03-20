@@ -1,0 +1,56 @@
+Conexion MCU extraño con thinger.io Nodo ABP en TTGO LORA32 OLED V2 con sensor BME280
+https://github.com/makers-bierzo/TTN-Bierzo/blob/master/TTN_Microcontrolador/LoRaWAN/ttn-abp-bme280/readme.md
+
+conexion Arduino Thinger.io
+https://www.esploradores.com/thinger-io-configuracion-almacenamiento-y-monitorizacion-de-datos-primera-parte/
+
+<!-.....................................................................................->
+Que es y como usar THINGER.IO
+https://www.youtube.com/watch?v=r2pzgQKwtMo
+
+Thinger.io Dashboard Preview
+https://www.youtube.com/watch?v=rvAM3BCiHJs
+
+thinger.io github
+https://github.com/thinger-io
+
+Funcion String()
+https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/
+
+ PYTHON ARDUINO SERIAL - pyserial - enviar datos de python 🐍 a arduino - Tutorial Python #12
+https://www.youtube.com/watch?v=HDzx8j7A59o
+
+GRÁFICOS EN VIVO – GUIS DE VISUALIZACIÓN DE DATOS CON DASH Y PYTHON
+https://unipython.com/graficos-vivo-guis-visualizacion-datos-dash/
+
+Botón o pulsador con Arduino: Todo lo que debes saber
+https://www.geekfactory.mx/tutoriales/tutoriales-arduino/boton-o-pulsador-con-arduino/
+
+Pantalla alfanumérica LCD 16X2 con Arduino
+https://www.geekfactory.mx/tutoriales/tutoriales-arduino/pantalla-lcd-16x2-con-arduino/
+
+Transmisión de datos en la red
+http://www.cca.org.mx/profesores/abc/pdfs/cisco/cisco_0.pdf
+
+Limites de voltaje, corriente y alimentación del Arduino
+https://www.aladuino.com.mx/blog/limites-de-voltaje-corriente-y-alimentacion-del-arduino/#:~:text=Independientemente%20del%20hecho%20que%20el,exceder%20nunca%20los%20200%20mA.
+
+Tkinter 07. Python y Arduino 😍 Control de Servomotor y Led 🎯 Lectura de Ultrasónico y Potenciómetro🚀
+https://www.youtube.com/watch?v=y14w4e6mgUE
+
+ACS712 Sensor de Corriente Directa y Alterna 30A
+https://ferretronica.com/products/acs712-sensor-de-corriente-directa-y-alterna-30a?variant=19615964168285&currency=COP&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&utm_campaign=gs-2020-01-11&utm_source=google&utm_medium=smart_campaign&gclid=CjwKCAjw7J6EBhBDEiwA5UUM2qJBxyOHOD3NWBOWSqBBFqxzIJtwwD9XcCucUqf9_m_9jIbhcuFMLBoCgssQAvD_BwE
+
+MEDIR TEMPERATURA CON ARDUINO Y SENSOR LM35
+https://www.luisllamas.es/medir-temperatura-con-arduino-y-sensor-lm35/
+
+Como crear un Sidebar Dashboard en React - Tutorial español Parte 1
+https://www.youtube.com/watch?v=l0F09p_7L7k
+
+Introduction to RTOS Part 1 - What is a Real-Time Operating System (RTOS)? | Digi-Key Electronics
+https://www.youtube.com/watch?v=F321087yYy4
+
+Python y Arduino Interfaz Gráfica de Usuario (GUI) Lectura de múltiples sensores.
+https://www.youtube.com/watch?v=8YEvU2Zi_LU
+
+

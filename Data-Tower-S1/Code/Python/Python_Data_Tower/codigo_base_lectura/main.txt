@@ -1,0 +1,90 @@
+## prueba uno comunicacion serial con Arduino , recepcion de datos del MCU de Arduino Mega
+
+## se necesita la libreria de comunicacion serial , para ello se utiliza "pip install serial"
+## lod dispositivos se listaran con "python -m serial.tools.list_ports"
+## se necesita la libreria de tiempo para para establecer espacois comodos para la comunicacion
+
+import serial
+import time
+
+import menus
+
+# Es necesario conocer a que puerto se esta conectando la placa y a que velocidad se transmite
+object_lecturaArduino = serial.Serial("COM3", 9600)
+time.sleep(1)
+
+while True:
+    val = object_lecturaArduino.readline()  ##leer cada linea
+    cadena_valores = val.decode('ascii')  ##decodificar lo que me llega utilizando ASCII
+
+    """
+    por puerto serial recibiremos "cadena_valore" que son nuestros datos
+    El problema con ellos es que bienen en el siguiente estilo (cada dato se recibe a distinto tiempo)
+    
+    descripcion_etiqueta:dato_info
+    
+    Esto de forma en string. Lo que nos interesa por el momento es la parte del dato, como podemos ver, este esta 
+    acontinucacion del caracter ":" por tanto debemos buscar en la trama de datos este caracter para capturar lo que 
+    tiene acontinuacion , la informacion que nos interesa 
+    """
+    pos = cadena_valores.index(":")  ## buscame en la trama de datos el indicador ":"
+    label = cadena_valores[:pos]  ##sacame desde el inicio de la trama de datos hasta la posicion ":"
+    value = cadena_valores[pos + 1:]  ##sacame el valor desde pos+1 (el dato) hasta terminar la trama de datos
+
+    """
+    label asi guardara la etiqueta del dato , en nuestro anterior ejemplo seria "descripcion_etiqueta"
+    value guardaria el valor o dato , en nuestro ejemplo seria "dato_info"
+
+    Ahora podemos identificar los datos por su etiqueta
+    """
+    ##----------------------------------------------------------------------------------
+    if label == 'Ip':
+        # print("La corriente pico del sistema es: {}".format(value))
+        current_pico_date = value
+    if label == 'Irms':
+        # print("la corriente RMS del sistema es: {}".format(value))
+        current_irms_date = value
+    if label == 'P':
+        # print("La potencia en WATTS del sistema es: {}".format(value))
+        power_date = value
+
+    if label == 'T1':
+        # print("La Temperatura del sensor 1 es: {}".format(value))
+        temp_1_date = value
+    if label == 'T2':
+        # print("La Temperatura del sensor 2 es: {}".format(value))
+        temp_2_date = value
+    if label == 'T3':
+        # print("La Temperatura del sensor 3 es: {}".format(value))
+        temp_3_date = value
+    if label == 'T4':
+        # print("La Temperatura del sensor 4 es: {}".format(value))
+        temp_4_date = value
+    if label == 'T5':
+        # print("La Temperatura del sensor 5 es: {}".format(value))
+        temp_5_date = value
+    if label == 'T6':
+        # print("La Temperatura del sensor 6 es: {}".format(value))
+        temp_6_date = value
+    if label == 'T7':
+        # print("La Temperatura del sensor 7 es: {}".format(value))
+        temp_7_date = value
+    if label == 'T8':
+        print("La Temperatura del sensor 8 es: {}".format(value))
+        temp_8_date = value
+
+    if label == 'MCU N':
+        print("El MCU recibio: {} |Este dato es erroneo CARAJO|".format(value))
+        mcu_n_date = value
+    if label == 'MCU 0':
+        print("El MCU recibio: {} |OFF|".format(value))
+        mcu_zero_date = value
+    if label == 'MCU 1':
+        print("El MCU recibio: {} |ON|".format(value))
+        mcu_one_date = value
+
+
+
+    # print(cadena_valores)
+
+# object_lecturaArduino.close() ##cerrar la lectura

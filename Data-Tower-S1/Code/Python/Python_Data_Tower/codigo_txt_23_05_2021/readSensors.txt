@@ -1,0 +1,47 @@
+
+import comunication
+
+def read_sensor_temp_and_current():
+
+    current_pico_date, current_irms_date, power_date = 0
+    temp_1_date, temp_2_date, temp_3_date, temp_4_date, temp_5_date, temp_6_date, temp_7_date, temp_8_date = 0
+
+
+    if comunication.label == 'Ip':
+        print("La corriente pico del sistema es: {}".format(comunication.value))
+        current_pico_date = comunication.value
+    elif comunication.label == 'Irms':
+        print("la corriente RMS del sistema es: {}".format(comunication.value))
+        current_irms_date = comunication.value
+    elif comunication.label == 'P':
+        print("La potencia en WATTS del sistema es: {}".format(comunication.value))
+        power_date = comunication.value
+
+    elif comunication.label == 'T1':
+        print("La Temperatura del sensor 1 es: {}".format(comunication.value))
+        temp_1_date = comunication.value
+    elif comunication.label == 'T2':
+        print("La Temperatura del sensor 2 es: {}".format(comunication.value))
+        temp_2_date = comunication.value
+    elif comunication.label == 'T3':
+        print("La Temperatura del sensor 3 es: {}".format(comunication.value))
+        temp_3_date = comunication.value
+    elif comunication.label == 'T4':
+        print("La Temperatura del sensor 4 es: {}".format(comunication.value))
+        temp_4_date = comunication.value
+    elif comunication.label == 'T5':
+        print("La Temperatura del sensor 5 es: {}".format(comunication.value))
+        temp_5_date = comunication.value
+    elif comunication.label == 'T6':
+        print("La Temperatura del sensor 6 es: {}".format(comunication.value))
+        temp_6_date = comunication.value
+    elif comunication.label == 'T7':
+        print("La Temperatura del sensor 7 es: {}".format(comunication.value))
+        temp_7_date = comunication.value
+    elif comunication.label == 'T8':
+        print("La Temperatura del sensor 8 es: {}".format(comunication.value))
+        temp_8_date = comunication.value
+
+
+
+

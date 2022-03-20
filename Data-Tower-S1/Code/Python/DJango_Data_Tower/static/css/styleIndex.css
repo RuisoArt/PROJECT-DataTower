@@ -1,0 +1,119 @@
+*{  margin:0;    padding: 0;    box-sizing: border-box; }
+body{    font-family: 'DM Sans', sans-serif; }
+
+/*------------------------------BODY GENERAL----------------------------------*/
+.contenedor
+{
+    padding: 30px 0; /*Ya que cada seccion tiene la clase contenedor , cad auna se separa con una margen de 30px vertical , 0 horizontal*/
+    width: 72%;
+    max-width: 1500px;
+    margin: auto; /*centrame todo con margenes automaticas*/
+    overflow: hidden; /* si algo esta fuera del limite de acho se ocultara */
+}
+/*------------------------------BODY HEADER ----------------------------------*/
+header
+{
+    width: 100%;
+    height: 600px;
+
+    background: #373B44;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, hsla(217, 89%, 61%, 0.5), hsla(222, 11%, 24%, 0.555)),url(../image/pexels-lee-campbell-115655.jpg);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, hsla(217, 89%, 61%, 0.555), hsla(222, 11%, 24%, 0.5)),url(../image/pexels-lee-campbell-115655.jpg); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}.wave
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+header .textos-header
+{
+    display:flex;
+    height: 450px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}.textos-header h1
+{
+    font-size: 80px;
+    color:#FFFF;
+}.textos-header h2
+{
+    font-size: 25px;
+    color:#FFFF;
+}.textos-header img
+   {
+    margin-top: 100px;
+   }
+ /*-----------------------------------BODY-MAIN---------------------------------------------*/
+.titulo
+{
+    font-size: 50px;
+    color: #25158c;
+    text-align: center;
+}
+.sub_titulo
+{
+    font-size: 20px;
+    color: #00c4ff;
+    text-align: center;
+}
+.canvas
+{
+     /*width: 450px;
+     height: 200px;*/
+}
+.graph
+{
+    width: 680px;
+    background-color: #000000;
+    border: #000000 10px solid;
+    /*border-top-left-radius: 40px;*/
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    -webkit-box-shadow: 7px 7px 8px -2px rgba(161,186,227,1);
+    -moz-box-shadow: 7px 7px 8px -2px rgba(161,186,227,1);
+    box-shadow: 7px 7px 8px -2px rgba(161,186,227,1);
+    display: inline-block;
+}
+.text1{ color: #49C6E6 ; font-size: 50px;}
+.text2{ color: #FF6384 ; font-size: 50px;}
+.text3{ color: #F6B94C ; font-size: 50px;}
+.text4{ color: #7EF858 ; font-size: 50px;}
+.text5{ color: #7A33EA ; font-size: 50px;}
+.text6{ color: #2B2696 ; font-size: 50px;}
+.text7{ color: #EAB1F6 ; font-size: 50px;}
+.text8{ color: #00F8A4 ; font-size: 50px;}
+.text9{ color: #E5854E ; font-size: 50px;}
+.text10{ color: #D2B201 ; font-size: 50px;}
+.text11{ color: #EF0B36 ; font-size: 50px;}
+/*------------------------------FOOTER _ PIE DE PAGINA----------------------------------*/
+footer
+{
+    background: #000000;
+    padding: 20px 0 15px 0;
+    margin:auto;
+    overflow: hidden;
+}.contenido-footer{
+    display:flex;
+    width: 90%;
+    justify-content: space-evenly;
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ffffff;
+}.contenido-PIE{
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+}.titulo-final{
+    text-align: center;
+    color: #ffffff38;
+    font-size: 15px;
+}

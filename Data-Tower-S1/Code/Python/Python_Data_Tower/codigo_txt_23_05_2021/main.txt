@@ -1,0 +1,38 @@
+import menus
+import readSensors
+import readMOC
+import comunication
+import ordenes_moc
+
+# ----------------------------------- LECTURA --------------------------------------------------------------------------
+
+while True:
+
+    readMOC.read_responsive_mcu_moc()
+
+    key = input('Menu improvisado de lectura de variables \n'
+                'Selecciones la opcion que prefiera: \n\n'
+                '[1] Recibir datos de sensores de corriente y temperatura \n'
+                '[2] Recbir datos de confirmacion de MCU\n'
+                '[3] Enviar comandos a MCU\n'
+                '[4] Cerrar el Programa\n')
+
+    tecla = key.toInt()
+
+    if tecla == 1:
+        readSensors.read_sensor_temp_and_current()
+    elif tecla == 2:
+        readMOC.read_responsive_mcu_moc()
+    elif tecla == 3:
+        ordenes_moc.ordenes()
+    elif tecla == 4:
+        print("\n Salir del programa \n")
+        break
+    else:
+        print("\ndato incorrecto\n")
+
+
+
+    # print(cadena_valores)
+
+# object_lecturaArduino.close() ##cerrar la lectura

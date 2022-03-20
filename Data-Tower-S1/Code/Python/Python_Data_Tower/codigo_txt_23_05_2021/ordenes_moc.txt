@@ -1,0 +1,30 @@
+import serial
+import comunication
+import menus
+
+def ordenes():
+    accion_moc = 0
+
+    menus.show_menu()
+
+    while True:
+
+        teclado = input('Escriba el numero de la opcion que necesita: ')
+
+        if teclado == '1':
+            accion_moc = 1
+            send = str(accion_moc)
+            comunication.object_lecturaArduino.write(send.encode('ascii'))
+            print("\n<-----Dato enviado ON----->\n")
+        elif teclado == '0':
+            accion_moc = 0
+            send = str(accion_moc)
+            comunication.object_lecturaArduino.write((send.encode('ascii')))
+            print("\n<-----Dato enviado OFF----->\n")
+        elif teclado == 'x':
+            print("\n<-----Close R/D----->\n")
+
+        else:
+            print("\n<-----dato erroneo----->\n")
+
+

@@ -1,0 +1,157 @@
+NOTAS PERSONALES Y CON HORROGRAFIA DEL PROYECTO
+
+link reference: https://www.youtube.com/watch?v=R4-XRK6NqMA
+
+Inicialmente el proyecto tratara solo de servir para un unico cliente que se conecte al servidor, esto es tal que, si
+se accede por "localhost:####" en el navegador para ver la pagina y en una paralela se hace lo mismo, solo se mostrara
+el contenido a la primera que haya ingresado y no a la segunda, esto es, solo se permite un cliente viendo el sistema.
+
+1) crear la aplicacion : python manage.py startapp my_app
+2) crear las migraciones : python manage.py migrate
+
+n) podemos correr el servidor con : python manage.py ruserver
+
+    Generalmente aparecera asi
+
+            Watching for file changes with StatReloader
+            Performing system checks...
+
+            System check identified no issues (0 silenced).
+            June 02, 2021 - 16:32:38
+            Django version 3.2.4, using settings 'DJango_Data_Tower.settings'
+            Starting development server at http://127.0.0.1:8000/
+            Quit the server with CTRL-BREAK.
+            D:\ruiso\ESTUDIOS\Kraken FOLDERS\Data-Tower-S1\Code\Python\DJango_Data_Tower\DJango_Data_Tower\urls.py changed, reloading.
+            Watching for file changes with StatReloader
+            Performing system checks...
+
+    Al ingresar  "http://127.0.0.1:8000/" en el navegador observaremos la pagina de bienvenida de Django por defecto
+
+4) crear dentro de la carpeta raiz del proyecto la carpeta "templates" , esta alvergara las plantillas que utilizaremos
+5) crear dentro de "templates" la primera plantilla que vamos a utilizar, "index.html" o como quiera llamarle
+6) abrir settings.py, ir a la parte de "INSTALLED_APS" y agregar "my_app"
+7) en settings.py, ir a la parte de TEMPLATES y agregar la carpeta templates
+8) ir a urls.py y agregar un "path" para direccionar a la aplicacion
+    path('',include('my_app.urls')),
+9) crear en my_app ese archivo de urls con el que estamos enlazando anteriormente
+10) ahora tenemos dos url.py, el primero ue esta en DJango_Data_tower y redirecciona al segundo que esta en my_app, este ultimo enlaza a la funcion index
+11) la funcion index esta internamente dentro de views.py, si aun no ha sido creada, pues hay que crearla :)
+
+    para crear la funcion hay que abrir views.py en el se escribira la siguiente funcion
+
+        def index(request):
+            return render(request, 'index.html', context={'text' : 'Hello Fucking World'})
+
+    esta funcion retorna una respuesta dada, sobrescrita, representada, mostrada en la plantilla index.html con una
+    llave/valor que es un texto que tiene la frase "Hello Fucking World"
+
+12) preparo el html para recibir la respuesta de la funcion index, para ello en el cuerpo del documento "body" pongo lo siguiente
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5">
+                <h1>{{ text }}</h1>
+            </div>
+        </div>
+    </div>
+
+    la parte del h1 recibira la llave text y escribira lel valor
+
+n) para observar los cambios hay que reiniciar el servidor, para esto en el IDE ctrl+c y luego python manage.py runserver
+    dado esto en el navegador observaremos la enigmatica frase
+
+n) ahora si a integrar los canales o websockets en el proyecto MUAJAJAJAJA >(¬u¬)>
+
+13) ir a la terminal ctrl+C (mientras) y escribir "pip install channels"
+
+n) ahora se tienen que agrgar las aplicaciones instaladas "canales" para que trabajen con el proyecto
+
+14) nos devolvemos a settings.py y buscamos INSTALLED_APS y agregamos 'channels'
+
+n) ahora necesitamos trabajar y definir si queremos canales sincronos o asincronos, esto esta dado si se utliza asgi.py o wsgi.py
+    estos son generados por Django cuando se instala channels (creo) y no usa los propios canales de DJANGO.
+    Se debe importar el protocolo de clase de enrutador
+
+15) Abro asgi.py e importo ProtocolTypeRouter para ahora cambiar el ruteo por este. Cuando se entre a por http se ejecutara get_asgi_application()
+    (ver codigo)
+
+16) ahora para usarlo, debo configurarlo en settings.py , para ello voy hasta la seccion de WSGI_APLICATION y agrego justo debajo
+    lo siguiente:
+
+    ASGI_APPLICATION = 'DJango_Data_Tower.asgi.application'
+
+17) ahora bien podemos reiniciar el servidor, pero ahora en la terminal aparecera lo siguiente:
+
+        Watching for file changes with StatReloader
+        Performing system checks...
+
+        System check identified no issues (0 silenced).
+        June 02, 2021 - 17:46:20
+        Django version 3.2.4, using settings 'DJango_Data_Tower.settings'
+        Starting ASGI/Channels version 3.0.3 development server at http://127.0.0.1:8000/
+        Quit the server with CTRL-BREAK.
+
+    Como podemos observar ahora tenemos un inicio de ASGI, lo que nos dice que ahora nuestro proyecto usa canales sincronos de servidor
+
+        Watching for file changes with StatReloader
+        Performing system checks...
+
+        System check identified no issues (0 silenced).
+        June 02, 2021 - 17:46:20
+        Django version 3.2.4, using settings 'DJango_Data_Tower.settings'
+------> Starting ASGI/Channels version 3.0.3 development server at http://127.0.0.1:8000/
+        Quit the server with CTRL-BREAK.
+
+18) Ahora creamos un archivo .py que se encargue del enrrutamiento de nuestro proyecto en my_app, "routing.py".
+    La idea es dar a los archivos principales unas url principales que utilizar  , asi que necesitamos definir
+    las funciones pero en patron de websockets
+
+    ws_urlpatterns = [
+    path('ws/some_url', WSConsumer.as_asgi())
+    ]
+
+    esta direccion utiliza la clase WSConsumer y la funcion de esa clase as_asgi, esto del codigo consumers.py
+    Si aun no existe hay que crearlo :)
+
+19) en asgi ahora ahy que poner una segunda direccion que no funciones con http si no con tipo de conexion websockets,
+    esta maneja otro tipo de protocolo
+
+    http://  =/=   ws://
+
+    los anteriores protocolos son muydiferentes, el que vamos a utilizar "ws" utiliza la clase de stock de Middleware la cual
+    la utilizamos para identificar a un usuario como se hace en Django con su propio modelo Oauth, la conexion sera por url.
+
+20) volviendo a consumers, lo que se quiere hacer es generar para este ejemplo es generar un numero aleatorio y mandarlo por json al html
+
+        class WSConsumer (WebsocketConsumer):
+            def connect(self):
+                self.accept()
+
+                for i in range(1000):
+                    self.send(json.dumps({'message': randint(1,100)}))
+                    sleep(1)
+
+        En la clase WSConsumer, utilice el protocolo para trabajar con Websockets
+        Con la funcion connect, retorne un ciclo de 1 a 1000 donde se generen numeros aleatorios entre 1 y 100 y cada que los genere espere 1 segundo
+        es decir, genra un numero , espera un segundo , genera otro numero , espera un segundo y asi 1000 veces
+
+21) ahora nos dirijimos al html y le damos el nombre de clase a h1 de "app"
+22) en el mismo html , temporarlmente, creamos un script , esto es lenguaje javascript.
+    En el JS se definira la instancia de la clase websockets que estoy creando con una variable
+    esta debe poder comunicarse con la urls de routing.py, la "ws_urlpatterns" que al ser ejecutada
+    accionara la clase de los consumidores que enviara el numero aleatorio
+
+    se debe esperar por el socket un mensaje en entrada , este sera recibido por una funcion que para el navegador es un evento "event"
+    en esta funcion se establece una funcion que recibira el Json
+    por la consola del navegador se mostrara este contenido de la variable
+    por el documento que es la plantilla que se ve se mostrara en la clase "app", como un elemento anidado
+
+23) para colocar graficos me baso en: https://www.youtube.com/watch?v=tZY260UyAiE
+
+Junto con el anterior link se utilizo los siguientes:
+
+https://redis.io/download
+https://www.chartjs.org/docs/latest/
+https://cdnjs.com/libraries/Chart.js
+https://getbootstrap.com/
+
